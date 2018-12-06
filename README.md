@@ -1,0 +1,1 @@
+## clang -std=c99 -c cn_kotliner.c -o kotliner.bc -emit-llvm

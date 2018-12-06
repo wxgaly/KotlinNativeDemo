@@ -1,0 +1,43 @@
+//plugins {
+//    id 'org.jetbrains.kotlin.jvm' version '1.3.10'
+//}
+
+group 'KotlinNativeDemo1'
+version '1.0-SNAPSHOT'
+
+//repositories {
+//    mavenCentral()
+//}
+
+//dependencies {
+//    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+//}
+
+//compileKotlin {
+//    kotlinOptions.jvmTarget = "1.8"
+//}
+//compileTestKotlin {
+//    kotlinOptions.jvmTarget = "1.8"
+//}
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies"
+        }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:1.3.10"
+    }
+}
+
+apply plugin: 'konan' // konan 就是用来编译 Kotlin 为 native 代码的插件
+
+
+konanArtifacts { //konanArtifacts 配置我们的项目
+
+    program('Main') {
+        srcFiles 'src/main/kotlin/Main.kt'
+    }
+}
